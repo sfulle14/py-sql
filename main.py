@@ -1,17 +1,24 @@
-from connection import create_connection
+from connection import *
+from getTables import *
 
-def main():
-    conn = create_connection()
+def testConnection():
     if conn:
         print("Connection successful")
-        # Use the connection here
-        conn.close()
+        # conn.close()
         return True
     else:
         print("Connection failed")
         return False
 
+def main():
+    testConnection()
+    # print_all_tables(conn)
+    tableList = table_list(conn)
+
+    for t in tableList:
+        print(t)
+
+
+
 if __name__ == '__main__':
-    result = main()
-    print(f"Connection test result: {result}")
-    
+    main()
