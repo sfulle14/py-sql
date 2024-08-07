@@ -8,7 +8,6 @@ def get_columns(conn, table):
         cursor.execute("SELECT column_name, data_type FROM information_schema.columns WHERE table_name = ?", (table,))
         columns = cursor.fetchall()
 
-        columnsList = []
         columntypeList = [[]]
 
         if columns:
@@ -17,9 +16,10 @@ def get_columns(conn, table):
                 columntypeList.append([column[0], column[1]])
         else:
             print("No columns in table.")
+            return columntypeList  # Return empty list if no columns
+        
     except pyodbc.Error as e:
         print(f"Error fetching tables: {e}")
-
 
     return columntypeList
 
