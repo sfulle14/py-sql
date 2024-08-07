@@ -20,10 +20,14 @@ def main():
     tableList = table_list(conn)
 
     
+    # for t in tableList:
+    #     columnList = get_columns(conn, t)
+    #     for c in columnList:
+    #         print(f"    {c}")
+
+    clear_files()
     for t in tableList:
-        columnList = get_columns(conn, t)
-        for c in columnList:
-            print(f"    {c}")
+        write_to_file(f'{t}.txt', t)
 
 
 
