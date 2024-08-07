@@ -20,19 +20,22 @@ def main():
     # print_all_tables(conn)
     tableList = table_list(conn)
 
+    columnList = get_columns(conn, tableList[0])
+    for c in columnList:
+        print(f"    {c}")
     
     # for t in tableList:
     #     columnList = get_columns(conn, t)
     #     for c in columnList:
     #         print(f"    {c}")
 
-    clear_files()
-    for table in tableList:
-        columnList = get_columns(conn, table)
-        columns = [column for column in columnList]
+    # clear_files()
+    # for table in tableList:
+    #     columnList = get_columns(conn, table)
+    #     columns = [column[0] for column in columnList]
 
-        insertStatment = generate_insert_statement(table, columns)
-        write_to_file(f'{table}_insert.sql', insertStatment + '\n')
+    #     insertStatment = generate_insert_statement(table, columns)
+    #     write_to_file(f'{table}_insert.sql', insertStatment + '\n')
 
 
 
