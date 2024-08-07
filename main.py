@@ -4,6 +4,7 @@ from getColumns import *
 import os
 import shutil 
 from createFiles import *
+from createInsert import *
 
 def testConnection():
     if conn:
@@ -26,8 +27,12 @@ def main():
     #         print(f"    {c}")
 
     clear_files()
-    for t in tableList:
-        write_to_file(f'{t}.txt', t)
+    for table in tableList:
+        columnList = get_columns(conn, table)
+        columns = [column for column in columnList]
+
+        insertStatment = generate_insert_statement(table, columns)
+        write_to_file(f'{table}_insert.sql', insertStatment + '\n')
 
 
 

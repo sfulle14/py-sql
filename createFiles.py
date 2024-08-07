@@ -15,5 +15,5 @@ def clear_files():
     # Function to create and write to a file
 def write_to_file(filename, content):
     file_path = os.path.join(tables_dir, filename)
-    with open(file_path, 'w') as file:
+    with open(file_path, 'a') as file:
         file.write(content)
