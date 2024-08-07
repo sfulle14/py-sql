@@ -20,7 +20,7 @@ def print_all_tables(conn):
 def table_list(conn):
     try:
         cursor = conn.cursor()
-        cursor.execute("SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE'")
+        cursor.execute("SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE'and table_name LIKE 'tbl%'")
         tables = cursor.fetchall()
         tablesList = []
         

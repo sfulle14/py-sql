@@ -1,5 +1,9 @@
 from connection import *
 from getTables import *
+from getColumns import *
+import os
+import shutil 
+from createFiles import *
 
 def testConnection():
     if conn:
@@ -15,8 +19,11 @@ def main():
     # print_all_tables(conn)
     tableList = table_list(conn)
 
+    
     for t in tableList:
-        print(t)
+        columnList = get_columns(conn, t)
+        for c in columnList:
+            print(f"    {c}")
 
 
 
