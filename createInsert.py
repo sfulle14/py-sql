@@ -15,7 +15,7 @@ def generate_insert_statement(table, columns, dataTypes):
             default_values.append('NULL')
         elif dataType == 'money':
             default_values.append('0.00')
-        elif dataType == 'data':
+        elif dataType == 'date':
             default_values.append("CURRENT_DATE")
         elif dataType == 'datetime':
             default_values.append("CURRENT_TIMESTAMP")
